@@ -77,4 +77,48 @@ SELECT student.*
 FROM student
 INNER JOIN class ON student.class_id = class.class_id
 WHERE class.class_name = 'c1121g1'
-ORDER BY student.student_name;
+ORDER BY substring(student.student_name,' ',-1) ;
+-- 1. Hiển thị số lượng học sinh theo học và số lượng mỗi lớp.
+select class.class_name,count(student.student_id) as so_luong_hoc_vien
+from class
+left join student on class.class_id=student.student_id
+group by class.class_id;
+select max(student_point)
+from student ;
+select class.class_name,max(student.student_point) as Highest_score
+from class
+inner join student on class.class_id=student.class_id
+group by class.class_name;
+select class.class_name,avg(student.student_point) as Avange_score
+from class
+inner join student on class.class_id=student.class_id
+group by class.class_name;
+SELECT instructor_name AS name, instructor_birthday AS birthday
+FROM instructor
+UNION
+SELECT student_name AS name, student_birthday AS birthday
+FROM student;
+SELECT student_name, student_point
+FROM student
+ORDER BY student_point DESC
+LIMIT 3;
+SELECT student_name, student_point
+FROM student
+WHERE student_point = (SELECT MAX(student_point) FROM student);
+CREATE INDEX idx_email ON student(student_email);
+DROP INDEX idx_email ON student;
+CREATE VIEW student_view AS
+SELECT student_id, student_name
+FROM student;
+DROP VIEW student_view;
+DELIMITER $$
+
+CREATE PROCEDURE findByName(IN search_name VARCHAR(50))
+BEGIN
+    SELECT student_id, student_name
+    FROM student
+    WHERE student_name LIKE CONCAT('%', search_name, '%');
+END $$
+
+DELIMITER ;
+CALL findByName('Nguyen');
