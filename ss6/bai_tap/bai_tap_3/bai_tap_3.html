@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đọc Truyện</title>
+    <style>
+        /* Cài đặt chung cho toàn trang */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mục lục truyện */
+        #menu {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        #menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        #menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Các nội dung truyện */
+        .content {
+            display: none;
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .content h5 {
+            color: #4CAF50;
+        }
+
+        /* Hiển thị nội dung khi được kích hoạt */
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header với ảnh truyện -->
+<header>
+    <img src="https://via.placeholder.com/1200x400?text=Truy%E1%BB%87n+Đọc+M%E1%BB%9Bi" alt="Ảnh truyện">
+</header>
+
+<!-- Mục lục truyện -->
+<div id="menu">
+    <a href="#chapter1" onclick="showContent('chapter1')">Chương 1</a>
+    <a href="#chapter2" onclick="showContent('chapter2')">Chương 2</a>
+    <a href="#chapter3" onclick="showContent('chapter3')">Chương 3</a>
+</div>
+
+<!-- Nội dung truyện -->
+<div id="chapter1" class="content">
+    <h5>Chương 1: Khởi Đầu Của Một Cuộc Phiêu Lưu</h5>
+    <p>Đây là nội dung của chương 1. Một câu chuyện thú vị bắt đầu...</p>
+</div>
+
+<div id="chapter2" class="content">
+    <h5>Chương 2: Cái Giá Của Sự Quyết Định</h5>
+    <p>Trong chương này, nhân vật chính đối mặt với những quyết định khó khăn...</p>
+</div>
+
+<div id="chapter3" class="content">
+    <h5>Chương 3: Con Đường Dài</h5>
+    <p>Chương 3 sẽ đưa bạn đến những tình tiết bất ngờ và thú vị...</p>
+</div>
+
+<script>
+    // Hàm hiển thị nội dung khi click vào mục lục
+    function showContent(chapterId) {
+        // Ẩn tất cả các nội dung
+        let contents = document.querySelectorAll('.content');
+        contents.forEach(function(content) {
+            content.classList.remove('show');
+        });
+
+        // Hiển thị nội dung tương ứng
+        let selectedContent = document.getElementById(chapterId);
+        selectedContent.classList.add('show');
+    }
+</script>
+
+</body>
+</html>
