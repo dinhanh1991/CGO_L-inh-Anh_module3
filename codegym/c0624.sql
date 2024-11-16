@@ -117,7 +117,7 @@ CREATE PROCEDURE findByName(IN search_name VARCHAR(50))
 BEGIN
     SELECT student_id, student_name
     FROM student
-    WHERE student_name LIKE CONCAT('%', search_name, '%');
+     WHERE SUBSTRING_INDEX(student_name, ' ', -1) = search_name;
 END $$
 
 DELIMITER ;
