@@ -1,0 +1,100 @@
+body{
+    font-family: Arial;
+}
+#menu, #menu ul, #menu li{
+    padding:0;
+    margin:0;
+}
+
+#menu li{
+    list-style: none;
+    position: relative;
+    width:100px;
+    height: 30px;
+    padding:0 20px;
+    background-color: black;
+    line-height: 30px;
+    cursor:pointer;
+}
+
+#menu li a{
+    text-decoration:none;
+    color: white;
+}
+
+#menu li:hover{
+    background-color:red;
+}                                                                                                                                                                                                                                                                                                                                                          body{
+                                                                                                                                                                                                                                                                                                                                                                font-family: Arial;
+                                                                                                                                                                                                                                                                                                                                                            }
+#menu, #menu ul, #menu li{
+    padding:0;
+    margin:0;
+}
+
+#menu li{
+    list-style: none;
+    position: relative;
+    width:100px;
+    height: 30px;
+    padding:0 20px;
+    background-color: black;
+    line-height: 30px;
+    cursor:pointer;
+}
+
+#menu li a{
+    text-decoration:none;
+    color: white;
+}
+
+#menu li:hover{
+    background-color:red;
+}
+
+#menu ul ul{
+    position: absolute;
+    top:0;
+    left:140px;
+    visibility:hidden;
+}
+Cuối cùng, chúng ta thêm một bộ chọn dành cho các danh sách con khi phần tử của danh sách ngoài bị đưa con trỏ qua. Bộ chọn này sẽ cho phép danh sách con tương ứng của phần tử đó được hiển thị lên.
+
+body{
+    font-family: Arial;
+}
+#menu, #menu ul, #menu li{
+    padding:0;
+    margin:0;
+}
+
+#menu li{
+    list-style: none;
+    position: relative;
+    width:100px;
+    height: 30px;
+    padding:0 20px;
+    background-color: black;
+    line-height: 30px;
+    cursor:pointer;
+}
+
+#menu li a{
+    text-decoration:none;
+    color: white;
+}
+
+#menu li:hover{
+    background-color:red;
+}
+
+#menu ul ul{
+    position: absolute;
+    top:0;
+    left:140px;
+    visibility:hidden;
+}
+
+#menu ul li:hover ul{
+    visibility:visible;
+}
