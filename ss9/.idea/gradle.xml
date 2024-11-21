@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/converted_curency/demo" />
+        <option name="gradleJvm" value="corretto-1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/converted_curency/demo" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/dictionary/Dictionary" />
+        <option name="gradleJvm" value="corretto-1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/dictionary/Dictionary" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/time_servlet/Greating" />
+        <option name="gradleJvm" value="corretto-1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/time_servlet/Greating" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/time_servlet/demo" />
+        <option name="gradleJvm" value="corretto-1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/time_servlet/demo" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
