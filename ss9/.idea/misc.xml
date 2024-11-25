@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/converted_curency/demo" />
-    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/dictionary/Dictionary" />
-    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/time_servlet/demo" />
-    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/time_servlet/Greating" />
+    <file type="web" url="file://$PROJECT_DIR$/bai_tap/discount/demo" />
+    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/converted/demo1" />
+    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/Dictionary/demo" />
+    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/greetting/demo1" />
+    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/timeservlet/demo" />
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-23 (2)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

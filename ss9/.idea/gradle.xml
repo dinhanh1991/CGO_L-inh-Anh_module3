@@ -3,38 +3,47 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/converted_curency/demo" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/bai_tap/discount/demo" />
         <option name="gradleJvm" value="corretto-1.8" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/thuc_hanh/converted_curency/demo" />
+            <option value="$PROJECT_DIR$/bai_tap/discount/demo" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/dictionary/Dictionary" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/Dictionary/demo" />
         <option name="gradleJvm" value="corretto-1.8" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/thuc_hanh/dictionary/Dictionary" />
+            <option value="$PROJECT_DIR$/thuc_hanh/Dictionary/demo" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/time_servlet/Greating" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/converted/demo1" />
         <option name="gradleJvm" value="corretto-1.8" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/thuc_hanh/time_servlet/Greating" />
+            <option value="$PROJECT_DIR$/thuc_hanh/converted/demo1" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/time_servlet/demo" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/greetting/demo1" />
         <option name="gradleJvm" value="corretto-1.8" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/thuc_hanh/time_servlet/demo" />
+            <option value="$PROJECT_DIR$/thuc_hanh/greetting/demo1" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/timeservlet/demo" />
+        <option name="gradleJvm" value="corretto-1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/timeservlet/demo" />
           </set>
         </option>
       </GradleProjectSettings>
