@@ -5,10 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f20889c-a326-49be-8a18-fd0b519ad035" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/discount/.idea/discount.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/.idea/thuc_hanh.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/.idea/converted.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/src/main/java/com/example/demo1/ConverterServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/src/main/java/com/example/demo1/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/converted/demo/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/.idea/Dictionary.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/src/main/java/com/example/demo/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/src/main/java/com/example/demo/TranslationServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/dictionary/demo/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/greetting/.idea/greetting.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/.idea/timeservlet.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/src/main/java/com/example/demo/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/src/main/java/com/example/demo/TimeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/timeservlet/demo/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ss9.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ss9.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai_tap/discount/demo/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bai_tap/discount/demo/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai_tap/discount/demo/src/main/java/com/example/demo/DiscountPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/bai_tap/discount/demo/src/main/java/com/example/demo/DiscountPrice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai_tap/discount/demo/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/bai_tap/discount/demo/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qodana.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +113,14 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="demo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
                 <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
@@ -64,11 +131,11 @@
     </system>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/thuc_hanh/converted/demo" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2pLWJfhMHRdJ7O6g0HEpn1SQDWL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -80,9 +147,10 @@
     "Gradle.demo [test].executor": "Run",
     "Gradle.demo.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Codegym/codegym module 3/ss9/bai_tap/discount",
+    "last_opened_file_path": "D:/Codegym/codegym module 3/ss9/thuc_hanh/converted/demo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -162,6 +230,8 @@
       <option name="presentableId" value="Default" />
       <updated>1732545765585</updated>
       <workItem from="1732545766621" duration="836000" />
+      <workItem from="1732548467096" duration="29000" />
+      <workItem from="1732548536150" duration="122000" />
     </task>
     <servers />
   </component>

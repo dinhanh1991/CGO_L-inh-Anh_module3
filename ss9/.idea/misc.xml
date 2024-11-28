@@ -3,8 +3,8 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/bai_tap/discount/demo" />
-    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/converted/demo1" />
-    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/Dictionary/demo" />
+    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/converted/demo" />
+    <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/dictionary/demo" />
     <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/greetting/demo1" />
     <file type="web" url="file://$PROJECT_DIR$/thuc_hanh/timeservlet/demo" />
   </component>
