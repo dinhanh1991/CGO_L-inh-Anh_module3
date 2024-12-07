@@ -1,16 +1,18 @@
 package com.example.school.model.dao.student_dao;
 
+import com.example.school.model.Result;
 import com.example.school.model.Student;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface IStudentDAO {
-    public void insertStudent(Student student) throws SQLException;
-    public Student selectStudent(String id);
+    public void insertStudent(Student student,Result result) throws SQLException;
+    public Student selectStudent(int id);
     public List<Student> selectAllStudent();
-    public void updateStudent(Student student) throws SQLException;
-    public void deleteStudent(String id) throws SQLException;
-    public List<Student> sortStudentByScore();
-    public List<Student> rankStudentByScore();
+    public boolean updateStudent(Student student, Result result) throws SQLException;
+    public boolean deleteStudent(String id) throws SQLException;
+    public List<Student> sortStudentByScore(String orderType) throws SQLException;
+    public List<Map<String, Object>> classifyStudent();
 }

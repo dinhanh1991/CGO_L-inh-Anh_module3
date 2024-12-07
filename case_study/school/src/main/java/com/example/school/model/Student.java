@@ -7,14 +7,24 @@ public class Student {
     private int teacherId;
     private float averageScore;
     private String password;
-
-    public Student(int id, String name, String className, int teacherId, float averageScore, String password) {
+    private String email;
+    public Student() {}
+    public Student( String name, String className, int teacherId, float averageScore, String password, String email) {
+        this.name = name;
+        this.className = className;
+        this.teacherId = teacherId;
+        this.averageScore = averageScore;
+        this.password = password;
+        this.email = email;
+    }
+    public Student(int id, String name, String className, int teacherId, float averageScore, String password, String email) {
         this.id = id;
         this.name = name;
         this.className = className;
         this.teacherId = teacherId;
         this.averageScore = averageScore;
         this.password = password;
+        this.email = email;
     }
 
     public int getId() {
@@ -63,5 +73,13 @@ public class Student {
 
     public void setAverageScore(float averageScore) {
         this.averageScore = averageScore;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

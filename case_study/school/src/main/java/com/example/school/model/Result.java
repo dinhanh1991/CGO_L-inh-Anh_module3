@@ -13,6 +13,7 @@ public class Result {
     private float informatics;
     private float physicalEducation;
     private float civicEducation;
+    public float averageScore;
     public Result(int id, int studentId, float math, float physics, float chemistry, float literature,
                   float history, float geography, float english, float informatics, float physicalEducation,
                   float civicEducation) {
@@ -28,6 +29,7 @@ public class Result {
         this.informatics = informatics;
         this.physicalEducation = physicalEducation;
         this.civicEducation = civicEducation;
+        this.averageScore = calculateAverageScore();
     }
 
     public int getId() {

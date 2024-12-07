@@ -5,6 +5,13 @@ public class SchoolClass {
     private String className;
     private int teacherId;
     private int totalStudents;
+
+    public SchoolClass(String className, int teacherId, int totalStudents) {
+        this.className = className;
+        this.teacherId = teacherId;
+        this.totalStudents = totalStudents;
+    }
+
     public SchoolClass(int id, String className, int teacherId, int totalStudents) {
         this.id = id;
         this.className = className;
