@@ -19,29 +19,13 @@
                 <input type="hidden" name="action" value="${teacher == null ? 'insert' : 'update'}">
                 <input type="hidden" name="id" value="${teacher != null ? teacher.id : ''}">
 
-                <%--<div class="mb-3">
+                <div class="mb-3">
                     <label for="id" class="form-label">ID:</label>
                     <input type="text" class="form-control" name="id" id="id"
                            value="${teacher != null ? teacher.id : ''}"
                     ${teacher != null ? 'readonly' : ''} required>
-                </div>--%>
-<c:if test="${teacher == null}">
-    <div class="mb-3">
-        <label for="idNew" class="form-label">ID:</label>
-        <input type="text" class="form-control" name="id" id="idNew" value="" required>
-    </div>
-</c:if>
+                </div>
 
-<c:if test="${teacher != null}">
-    <!-- Hiển thị input khi teacher có giá trị -->
-    <div class="mb-3">
-    <label for="id" class="form-label">ID:</label>
-    <input type="text" class="form-control" name="id" id="id"
-    value="${teacher.id}"
-    readonly required>
-    </div>
-
-</c:if>
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên:</label>
                     <input type="text" class="form-control" name="name" id="name" value="${teacher != null ? teacher.name : ''}" required>

@@ -70,7 +70,7 @@ public class TeacherServlet extends HttpServlet {
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("teacher/form.jsp").forward(request, response);
+        request.getRequestDispatcher("teacher/formAdd.jsp").forward(request, response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -19,7 +19,7 @@ public class TeacherDAO implements ITeacherDAO {
 
     @Override
     public void insertTeacher(Teacher teacher, TeacherAssignment teacherAssignment) throws SQLException {
-        connection.setAutoCommit(false);  // Tắt chế độ tự động commit
+        connection.setAutoCommit(false);
         try (CallableStatement callableStatement = connection.prepareCall(INSERT_TEACHER_SQL)) {
             callableStatement.setString(1, teacher.getId());
             callableStatement.setString(2, teacher.getName());
