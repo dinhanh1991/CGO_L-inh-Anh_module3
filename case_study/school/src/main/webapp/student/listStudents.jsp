@@ -7,12 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student List</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="text-primary">Student List</h2>
-    <a href="<%= request.getContextPath() %>/student/addStudent.jsp" class="btn btn-success">Add New Student</a>
+    <a href="<%= request.getContextPath() %>/student/addStudent.jsp" class="btn btn-success">
+      <i class="bi bi-person-plus"></i> Add New Student
+    </a>
   </div>
   <form action="<%= request.getContextPath() %>/students?action=sort" method="get" class="row g-3 mb-4">
     <div class="col-md-4">
@@ -31,20 +34,22 @@
       </select>
     </div>
     <div class="col-md-4 d-flex align-items-end">
-      <button type="submit" class="btn btn-primary w-100">Sort</button>
+      <button type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-sort"></i> Sort
+      </button>
     </div>
   </form>
 
   <table class="table table-bordered table-striped table-hover">
     <thead class="table-primary">
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Class</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Teacher ID</th>
-      <th>Average Score</th>
+      <th>ID <i class="bi bi-sort"></i></th>
+      <th>Name <i class="bi bi-sort"></i></th>
+      <th>Class <i class="bi bi-sort"></i></th>
+      <th>Email <i class="bi bi-sort"></i></th>
+      <th>Password <i class="bi bi-sort"></i></th>
+      <th>Teacher ID <i class="bi bi-sort"></i></th>
+      <th>Average Score <i class="bi bi-sort"></i></th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -61,12 +66,18 @@
         <td>
           <div class="d-flex gap-2">
             <a href="<%= request.getContextPath() %>/students?action=view&id=${student.id}"
-               class="btn btn-info btn-sm">View</a>
+               class="btn btn-info btn-sm">
+              <i class="bi bi-eye"></i> View
+            </a>
             <a href="<%= request.getContextPath() %>/students?action=delete&id=${student.id}"
                class="btn btn-danger btn-sm"
-               onclick="return confirm('Are you sure?')">Delete</a>
+               onclick="return confirm('Are you sure?')">
+              <i class="bi bi-trash"></i> Delete
+            </a>
             <a href="${pageContext.request.contextPath}/student/updateStudentForm.jsp?action=update&id=${student.id}"
-               class="btn btn-warning btn-sm">Edit</a>
+               class="btn btn-warning btn-sm">
+              <i class="bi bi-pencil"></i> Edit
+            </a>
           </div>
         </td>
       </tr>
@@ -74,7 +85,9 @@
     </tbody>
   </table>
   <div class="mt-3">
-    <a href="<%= request.getContextPath() %>/students?action=classify" class="btn btn-secondary">Classify Student List</a>
+    <a href="<%= request.getContextPath() %>/students?action=classify" class="btn btn-secondary">
+      <i class="bi bi-filter"></i> Classify Student List
+    </a>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

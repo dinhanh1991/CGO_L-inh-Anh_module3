@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classified Students</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Bootstrap Icons -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Chỉnh font chữ */
+        }
+        th, td {
+            text-align: center; /* Căn giữa bảng */
+        }
+        .table th {
+            font-weight: bold; /* Đậm cho tiêu đề bảng */
+        }
+    </style>
 </head>
 <body class="bg-light">
 <div class="container mt-5">
@@ -20,6 +32,7 @@
             <th>Homeroom Class Name</th>
             <th>Average Score</th>
             <th>Classification</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -30,12 +43,22 @@
                 <td>${student.className}</td>
                 <td>${student.averageScore}</td>
                 <td>${student.classifyStudent}</td>
+                <td>
+                    <a href="<%= request.getContextPath() %>/students?action=view&id=${student.id}" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye"></i> View
+                    </a>
+                    <a href="<%= request.getContextPath() %>/students?action=delete&id=${student.id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
+                        <i class="bi bi-trash"></i> Delete
+                    </a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
-    <a href="<%= request.getContextPath() %>/students?action=list" class="btn btn-secondary">Back to List</a>
+    <a href="<%= request.getContextPath() %>/students?action=list" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

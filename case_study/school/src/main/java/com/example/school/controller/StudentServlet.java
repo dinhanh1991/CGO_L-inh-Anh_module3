@@ -69,8 +69,8 @@ public class StudentServlet extends HttpServlet {
     private void sortStudents(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         String orderType = request.getParameter("orderType");
         String field = request.getParameter("field");
-        List<Student> studentsSort = studentDAO.sortStudentByScore(orderType, field);
-        request.setAttribute("students", studentsSort);
+        List<Student> students = studentDAO.sortStudentByScore(orderType, field);
+        request.setAttribute("students", students);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/student/listStudents.jsp");
         dispatcher.forward(request, response);
     }
