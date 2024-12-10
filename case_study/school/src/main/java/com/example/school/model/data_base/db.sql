@@ -1,33 +1,39 @@
-USE school;
+use highschool;
 CREATE TABLE teacher (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+     id varchar(20) PRIMARY KEY not null,
     name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    class_name VARCHAR(50) UNIQUE,
-    subject ENUM('Toán', 'Lý', 'Hóa', 'Văn', 'Sử', 'Địa', 'Anh', 'Tin học', 'Thể dục', 'Giáo dục công dân') NOT NULL,
-    teaching_class varchar(50)
+    email VARCHAR(100) NOT NULL ,
+    homeroom_class VARCHAR(50) ,
+    subject varchar(50) NOT NULL,
+    teaching_class varchar(50),
+    password varchar(50) default '123456',
+     CHECK (teaching_class REGEXP '^(10|11|12)(A|B|C)[1-9][0-9]*$') ,
+      CHECK (homeroom_class REGEXP '^(10|11|12)(A|B|C)[1-9][0-9]*$') 
+    
 );
 CREATE TABLE class (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    class_name VARCHAR(50) NOT NULL UNIQUE, 
-    teacher_id INT UNIQUE,
-    total_students INT DEFAULT 0,
+    id varchar(20) PRIMARY KEY,
+    class_name VARCHAR(50) NOT NULL UNIQUE , 
+    teacher_id varchar(20) NOT null,
+    total_students INT ,
     FOREIGN KEY (teacher_id) REFERENCES teacher(id),
     CHECK (class_name REGEXP '^(10|11|12)(A|B|C)[1-9][0-9]*$') 
 );
 CREATE TABLE student (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+   id varchar(20) PRIMARY KEY not null,
     name VARCHAR(100) NOT NULL,
     class_name VARCHAR(50),
-    teacher_id INT,
+    teacher_id varchar(20) NOT null,
     average_score FLOAT,
+    email varchar(50),
+    password varchar(50) default '123456',
     UNIQUE (name, class_name),
     FOREIGN KEY (class_name) REFERENCES class(class_name),
     FOREIGN KEY (teacher_id) REFERENCES teacher(id)
 );
 CREATE TABLE result (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id INT NOT NULL,
+   id varchar(20) PRIMARY KEY,
+    student_id VARCHAR(20) NOT NULL,
     math FLOAT,
     physics FLOAT,
     chemistry FLOAT,
@@ -42,247 +48,112 @@ CREATE TABLE result (
     FOREIGN KEY (student_id) REFERENCES student(id)ON DELETE CASCADE
 );
 CREATE TABLE teacher_assignment (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    teacher_id INT NOT NULL,
-    subject VARCHAR(50) NOT NULL,
-    teaching_classes TEXT NOT NULL,
+   id varchar(20) PRIMARY KEY,
+    TEACHER_ID varchar(20) NOT NULL,
     homeroom_class VARCHAR(50),
-    FOREIGN KEY (teacher_id) REFERENCES teacher(id),
-    FOREIGN KEY (homeroom_class) REFERENCES class(class_name),
-    CHECK (homeroom_class REGEXP '^(10|11|12)(A|B|C)[1-9][0-9]*$' OR homeroom_class IS NULL)
+    subject varchar(50) NOT NULL,
+    teaching_class varchar(50),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CHECK (teaching_class REGEXP '^(10|11|12)(A|B|C)[1-9][0-9]*$') ,
+      CHECK (homeroom_class REGEXP '^(10|11|12)(A|B|C)[1-9][0-9]*$') 
 );
-ALTER TABLE teacher DROP INDEX class_name;
-ALTER TABLE student 
-ADD COLUMN password VARCHAR(255) NOT NULL;
-INSERT INTO teacher (name, email, class_name, subject) VALUES
-('Nguyễn Văn A', 'nguyenvana@example.com', '10A1', 'Toán'),
-('Trần Thị B', 'tranthib@example.com', '11B1', 'Lý'),
-('Lê Quang C', 'lequangc@example.com', '12C1', 'Hóa'),
-('Phạm Thị D', 'phamthid@example.com', '10A1', 'Văn'),
-('Nguyễn Thị E', 'nguyenthie@example.com', '11B1', 'Sử');
-INSERT INTO class (class_name, teacher_id, total_students) VALUES
-('10A1', 1, 30),
-('11B1', 2, 28),
-('12C1', 3, 32),
-('10A2', 4, 25),
-('11B2', 5, 27);
-INSERT INTO student (name, class_name, teacher_id, average_score) VALUES
-('Lê Minh H', '10A1', 1, 8.5),
-('Nguyễn Mai T', '10A1', 1, 7.8),
-('Trần Quang L', '11B1', 2, 9.0),
-('Phan Ánh M', '11B1', 2, 6.5),
-('Đỗ Lệ P', '12C1', 3, 8.2),
-('Vũ Thiện Q', '12C1', 3, 7.0);
-INSERT INTO result (student_id, math, physics, chemistry, literature, history, geography, english, informatics, physical_education, civic_education, average_score) VALUES
-(1, 9.0, 8.5, 8.7, 7.5, 8.0, 9.0, 8.5, 9.0, 8.0, 8.0, 8.4),
-(2, 7.5, 7.2, 8.0, 7.8, 6.5, 7.8, 8.0, 8.0, 7.5, 7.5, 7.6),
-(3, 9.5, 9.0, 9.2, 8.5, 9.0, 8.8, 9.0, 9.5, 9.0, 9.0, 9.2),
-(4, 6.8, 6.5, 7.0, 6.7, 6.0, 6.5, 7.0, 6.8, 6.5, 6.2, 6.5),
-(5, 8.0, 8.0, 8.5, 8.2, 8.0, 7.8, 8.5, 8.0, 8.0, 8.2, 8.1),
-(6, 7.5, 7.2, 7.8, 7.0, 7.5, 7.0, 7.8, 7.5, 7.0, 7.5, 7.4);
-INSERT INTO teacher_assignment (teacher_id, subject, teaching_classes, homeroom_class) VALUES
-(1, 'Toán', '10A1, 10A2', '10A1'),
-(2, 'Lý', '11B1, 11B2', '11B1'),
-(3, 'Hóa', '12C1', '12C1'),
-(4, 'Văn', '10A1, 10A2', '10A2'),
-(5, 'Sử', '11B1, 11B2', '11B1');
-alter table student
-    ADD COLUMN email VARCHAR(255) NOT NULL;
-select * from Student;
-SELECT
-    id,
-    name,
-    class_name,
-    average_score,
-    CASE
-        WHEN average_score >= 8.0 THEN 'Giỏi'
-        WHEN average_score >= 6.5 THEN 'Khá'
-        WHEN average_score >= 5.0 THEN 'Trung bình'
-        ELSE 'Yếu'
-        END AS classification
-FROM student
-ORDER BY classification, average_score DESC;
-DELIMITER //
+INSERT INTO student (id, name, class_name, teacher_id, average_score, email) VALUES
+('10A1001','Trần Văn Ân', '10A1', 'T01', 8.0, 'antran@gmail.com'),
+('10A1002','Tần Hông Miên', '10A1', 'T01', 7.0, 'mientran@gmail.com'),
+('10A1003','Cam Bảo Bảo', '10A1', 'T01', 9.0, 'baobao@gmail.com'),
+('10A2001','Đoàn Diên Khánh', '10A2', 'T02', 5.0, 'khanhdoan@gmail.com'),
+('10A2002','Chu Thông', '10A2', 'T02', 6.5, 'thongchu@gmail.com'),
+('11B1001','Mai Siêu Phong', '11B1', 'T03', 7.8, 'tromkinhthu@gmail.com'),
+('11B1002','Trần Huyền Phong', '11B1', 'T03', 8.0, 'tromnudode@gmail.com'),
+('11B1003','Khúc Linh Phong', '11B1', 'T03', 7.4, 'tromkhobau@gmail.com'),
+('11B2001','Khang Mẫn', '11B2', 'T04', 5.2, 'soatu@gmail.com'),
+('11B2002','Nguyễn A châu', '11B2', 'T04', 8.9, 'chaunguyen@gmail.com'),
+('11B2003','Nguyễn A Tử', '11B2', 'T04', 4.9, 'acnu@gmail.com'),
+('11B2004','Nguyễn Tinh Trúc', '11B2', 'T04', 5.7, 'soatu@gmail.com'),
+('11B3001','Viên Thừa Chí', '11B3', 'T05', 7.6, 'yeuduoi@gmail.com'),
+('11B3002','Hạ Thanh Thanh', '11B3', 'T05', 6.9, 'hayghen@gmail.com'),
+('11B3003','Vi Tieu Bao', '11B3', 'T05', 9.0, 'luumanhnghiakhi@gmail.com'),
+('11B3004','Triệu Thị Mẫn', '11B3', 'T05', 8.6, 'yeunumongco@gmail.com'),
+('12C3001','Trịnh Thi Hà', '12C1', 'T06', 8.1, 'yeunuhanghieu@gmail.com'),
+('12C3002','Mộc Uyển Thanh', '12C1', 'T06', 9.1, 'depgai@gmail.com'),
+('12C3004','Doãn Chí Bình', '12C1', 'T06', 9.1, 'daosi@gmail.com'),
+('12C3005','Dương Thiết Tâm', '12C2', 'T07', 9.7, 'daosi@gmail.com');
+INSERT INTO teacher (id, name, email, homeroom_class, subject, teaching_class) VALUES
+('T01', 'Nguyễn Văn A', 'teacher01@gmail.com', '10A1', 'Math', '10A1'),
+('T02', 'Trần Thị B', 'teacher02@gmail.com', '10A2', 'Physics', '10A2'),
+('T03', 'Lê Văn C', 'teacher03@gmail.com', '11B1', 'Literature', '11B1'),
+('T04', 'Phạm Thị D', 'teacher04@gmail.com', '11B2', 'History', '11B2'),
+('T05', 'Hoàng Văn E', 'teacher05@gmail.com', '11B3', 'Chemistry', '11B3'),
+('T06', 'Vũ Thị F', 'teacher06@gmail.com', '12C1', 'English', '12C1'),
+('T07', 'Đặng Văn G', 'teacher07@gmail.com', '12C2', 'Geography', '12C2');
+INSERT INTO teacher (id, name, email, homeroom_class, subject, teaching_class) VALUES
+('T08', 'Hoàng Dược Sư', 'duocsu@gmail.com', Null, 'Infomation', '10A1'),
+('T09', 'Trần Thị B', 'teacher02@gmail.com', Null, 'physical_education', '10A2'),
+('T10', 'Lê Văn C', 'teacher03@gmail.com', Null, ' civic_education', '11B1');
+INSERT INTO class (id, class_name, teacher_id, total_students) VALUES
+('C01', '10A1', 'T01', 3),
+('C02', '10A2', 'T02', 2),
+('C03', '11B1', 'T03', 3),
+('C04', '11B2', 'T04', 4),
+('C05', '11B3', 'T05', 4),
+('C06', '12C1', 'T06', 3),
+('C07', '12C2', 'T07', 1);
+INSERT INTO teacher_assignment (id, teacher_id, homeroom_class, subject, teaching_class) VALUES
+('A01', 'T01', '10A1', 'Math', '10A1'),
+('A02', 'T02', '10A2', 'Physics', '10A2'),
+('A03', 'T03', '11B1', 'Literature', '11B1'),
+('A04', 'T04', '11B2', 'History', '11B2'),
+('A05', 'T05', '11B3', 'Chemistry', '11B3'),
+('A06', 'T06', '12C1', 'English', '12C1'),
+('A07', 'T07', '12C2', 'Geography', '12C2'),
 
-CREATE PROCEDURE UpdateStudentAndResult(
-    IN studentId INT,
-    IN studentName VARCHAR(100),
-    IN className VARCHAR(50),
-    IN teacherId INT,
-    IN averageScore FLOAT,
-    IN math FLOAT,
-    IN physics FLOAT,
-    IN chemistry FLOAT,
-    IN literature FLOAT,
-    IN history FLOAT,
-    IN geography FLOAT,
-    IN english FLOAT,
-    IN informatics FLOAT,
-    IN physical_education FLOAT,
-    IN civic_education FLOAT
-)
-BEGIN
-    DECLARE oldClassName VARCHAR(50);
+('A08', 'T08', NULL, 'Infomation', '10A1'),
+('A09', 'T09', NULL, 'physical_education', '10A2'),
+('A10', 'T10', NULL, 'civic_education', '11B1');
+INSERT INTO result (id, student_id, math, physics, chemistry, literature, history, geography, english, informatics, physical_education, civic_education, average_score) VALUES
+('R01', '10A1001', 8.0, 7.5, 8.5, 9.0, 7.8, 8.2, 8.0, 8.5, 8.0, 7.9, 8.0),
+('R02', '10A1002', 7.0, 7.0, 7.2, 8.0, 6.8, 7.0, 7.5, 7.3, 7.1, 6.9, 7.0),
+('R03', '10A1003', 9.0, 8.5, 9.2, 9.5, 8.8, 9.0, 9.1, 9.0, 9.0, 8.9, 9.0),
+('R04', '10A2001', 5.0, 4.8, 5.2, 5.5, 5.0, 5.1, 5.3, 5.2, 5.0, 5.0, 5.0),
+('R05', '10A2002', 6.5, 6.0, 6.7, 7.0, 6.5, 6.8, 6.9, 6.7, 6.5, 6.4, 6.5),
+('R06', '11B1001', 7.8, 7.5, 7.6, 8.0, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.8),
+('R07', '11B1002', 8.0, 7.9, 8.2, 8.5, 8.1, 8.0, 8.0, 8.0, 7.9, 7.8, 8.0),
+('R08', '11B1003', 7.4, 7.2, 7.5, 7.8, 7.5, 7.4, 7.3, 7.2, 7.4, 7.3, 7.4),
+('R09', '11B2001', 5.2, 5.0, 5.3, 5.5, 5.2, 5.3, 5.1, 5.0, 5.2, 5.0, 5.2),
+('R10', '11B2002', 8.9, 8.5, 8.7, 9.0, 8.8, 8.9, 8.8, 8.7, 8.6, 8.5, 8.9),
+('R11', '11B2003', 4.9, 5.0, 4.8, 5.0, 5.1, 4.9, 4.8, 5.0, 4.7, 4.6, 4.9),
+('R12', '11B2004', 5.7, 5.8, 5.6, 5.5, 5.7, 5.6, 5.5, 5.4, 5.3, 5.2, 5.7),
+('R13', '11B3001', 7.6, 7.5, 7.4, 7.8, 7.6, 7.7, 7.5, 7.4, 7.3, 7.2, 7.6),
+('R14', '11B3002', 6.9, 7.0, 7.2, 7.1, 6.9, 7.0, 6.8, 6.7, 6.6, 6.5, 6.9),
+('R15', '11B3003', 9.0, 8.8, 9.2, 9.1, 9.0, 9.0, 9.1, 9.0, 9.2, 9.3, 9.0),
+('R16', '11B3004', 8.6, 8.7, 8.5, 8.8, 8.7, 8.6, 8.8, 8.7, 8.5, 8.4, 8.6),
+('R17', '12C3001', 8.1, 8.0, 8.2, 8.3, 8.1, 8.0, 8.1, 8.0, 8.2, 8.1, 8.1),
+('R18', '12C3002', 9.1, 9.0, 9.2, 9.3, 9.1, 9.2, 9.0, 9.1, 9.3, 9.2, 9.1),
+('R19', '12C3004', 9.1, 9.2, 9.0, 9.3, 9.1, 9.2, 9.0, 9.1, 9.2, 9.1, 9.1),
+('R20', '12C3005', 9.7, 9.6, 9.8, 9.9, 9.7, 9.8, 9.9, 9.7, 9.6, 9.5, 9.7);
+INSERT INTO class (id, class_name,teacher_id,total_students) VALUES
+('C08', '12C3','T11',0);
 
-    -- Lưu tên lớp hiện tại
-SELECT class_name INTO oldClassName FROM student WHERE id = studentId;
-
--- Cập nhật thông tin học sinh
-UPDATE student
-SET
-    name = studentName,
-    class_name = className,
-    teacher_id = teacherId,
-    average_score = (math + physics + chemistry + literature + history + geography + english + informatics + physical_education + civic_education) / 10
-WHERE id = studentId;
-
--- Cập nhật bảng result
-UPDATE result
-SET
-    math = math,
-    physics = physics,
-    chemistry = chemistry,
-    literature = literature,
-    history = history,
-    geography = geography,
-    english = english,
-    informatics = informatics,
-    physical_education = physical_education,
-    civic_education = civic_education,
-    average_score = (math + physics + chemistry + literature + history + geography + english + informatics + physical_education + civic_education) / 10
-WHERE student_id = studentId;
-
--- Cập nhật số học sinh trong lớp
-IF oldClassName <> className THEN
-        -- Giảm số học sinh của lớp cũ
-UPDATE class
-SET total_students = total_students - 1
-WHERE class_name = oldClassName;
-
--- Kiểm tra lớp mới có tồn tại không
-IF EXISTS (SELECT 1 FROM class WHERE class_name = className) THEN
-            -- Tăng số học sinh của lớp mới
-UPDATE class
-SET total_students = total_students + 1
-WHERE class_name = className;
-END IF;
-END IF;
-END //
-
-DELIMITER ;
-    DELIMITER $$
-
-CREATE PROCEDURE insert_student (
-    IN p_name VARCHAR(100),
-    IN p_class_name VARCHAR(50),
-    IN p_teacher_id INT,
-    IN p_average_score FLOAT,
-    IN p_password VARCHAR(255),
-    IN p_email VARCHAR(255)
-)
-BEGIN
-    DECLARE class_exists INT;
-    DECLARE teacher_exists INT;
-    DECLARE last_student_id INT;
-SELECT COUNT(*) INTO class_exists
-FROM class WHERE class_name = p_class_name;
-SELECT COUNT(*) INTO teacher_exists
-FROM teacher WHERE class_name = p_class_name;
-IF class_exists > 0 THEN
-UPDATE class
-SET total_students = total_students + 1
-WHERE class_name = p_class_name;
-END IF;
-
-    IF teacher_exists > 0 THEN
-        SET p_teacher_id = (SELECT id FROM teacher WHERE class_name = p_class_name LIMIT 1);
-ELSE
-        SET p_teacher_id = NULL;
-END IF;
-
-INSERT INTO student (name, class_name, teacher_id, average_score, password, email)
-VALUES (p_name, p_class_name, p_teacher_id, p_average_score, p_password, p_email);
-
-SET last_student_id = LAST_INSERT_ID();
-
-INSERT INTO result (student_id, math, physics, chemistry, literature, history, geography, english, informatics, physical_education, civic_education, average_score)
-VALUES (last_student_id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, p_average_score);
-END$$
-
-DELIMITER ;
-DELIMITER $$
-
-CREATE PROCEDURE UpdateTeacherAndAssignment(
-    IN teacherId INT,
-    IN teacherName VARCHAR(100),
-    IN teacherEmail VARCHAR(100),
-    IN homeRoomClassName VARCHAR(50),
-    IN subject VARCHAR(50),
-    IN teachingClass VARCHAR(50),
-    IN assignmentSubject VARCHAR(50),
-    IN assignmentTeachingClasses TEXT,
-    IN assignmentHomeroomClass VARCHAR(50)
-)
-BEGIN
-    DECLARE homeroomClass VARCHAR(50);
-    DECLARE newTeacherId INT;
-
-    -- Kiểm tra giáo viên có phải là giáo viên chủ nhiệm không
-SELECT homeroom_class INTO homeroomClass
-FROM teacher_assignment
-WHERE teacher_id = teacherId;
-
--- Nếu giáo viên có lớp chủ nhiệm, tìm giáo viên thay thế chưa có lớp chủ nhiệm
-IF homeroomClass IS NOT NULL THEN
-        -- Chọn ngẫu nhiên giáo viên chưa chủ nhiệm lớp nào
-SELECT id INTO newTeacherId
-FROM teacher
-WHERE id NOT IN (SELECT teacher_id FROM teacher_assignment WHERE homeroom_class IS NOT NULL)
-ORDER BY RAND()  -- Sắp xếp ngẫu nhiên
-    LIMIT 1;
-
--- Nếu có giáo viên thay thế, cập nhật các bảng liên quan
-IF newTeacherId IS NOT NULL THEN
-            -- Cập nhật bảng class: Gán giáo viên thay thế vào lớp chủ nhiệm cũ
-UPDATE class
-SET teacher_id = newTeacherId
-WHERE class_name = homeroomClass;
-
--- Cập nhật bảng teacher_assignment: Gán lớp chủ nhiệm cho giáo viên mới
-UPDATE teacher_assignment
-SET homeroom_class = homeroomClass
-WHERE teacher_id = newTeacherId;
-
--- Cập nhật bảng student: Cập nhật teacher_id cho học sinh
-UPDATE student
-SET teacher_id = newTeacherId
-WHERE class_name = homeroomClass;
-ELSE
-            -- Nếu không có giáo viên thay thế, báo lỗi
-            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No available teacher to replace the homeroom teacher';
-END IF;
-END IF;
-
-    -- Cập nhật bảng teacher với thông tin mới
-UPDATE teacher
-SET name = teacherName,
-    email = teacherEmail,
-    home_room_class_name = homeRoomClassName,
-    subject = subject,
-    teaching_class = teachingClass
-WHERE id = teacherId;
-
--- Cập nhật bảng teacher_assignment nếu giáo viên có lớp chủ nhiệm mới
-IF homeroomClass IS NULL OR homeroomClass <> assignmentHomeroomClass THEN
-UPDATE teacher_assignment
-SET subject = assignmentSubject,
-    teaching_classes = assignmentTeachingClasses,
-    homeroom_class = assignmentHomeroomClass
-WHERE teacher_id = teacherId;
-END IF;
-
-END$$
-
-DELIMITER ;
-
-
+INSERT INTO result (id, student_id, math, physics, chemistry, literature, history, geography, english, informatics, physical_education, civic_education, average_score)
+VALUES
+    ('R01', '10A1001', 7.8, 8.2, 8.1, 5.6, 6.7, 7.5, 8.3, 8.7, 5.9, 7.7, 7.45),
+    ('R02', '10A1002', 7.0, 7.0, 7.2, 8.0, 6.8, 7.0, 7.5, 7.3, 7.1, 6.9, 7.0),
+    ('R03', '10A1003', 9.0, 8.5, 9.2, 9.5, 8.8, 9.0, 9.1, 9.0, 9.0, 8.9, 9.0),
+    ('R04', '10A2001', 5.0, 4.8, 5.2, 5.5, 5.0, 5.1, 5.3, 5.2, 5.0, 5.0, 5.0),
+    ('R05', '10A2002', 6.5, 6.0, 6.7, 7.0, 6.5, 6.8, 6.9, 6.7, 6.5, 6.4, 6.5),
+    ('R06', '11B1001', 7.8, 7.5, 7.6, 8.0, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.8),
+    ('R07', '11B1002', 8.0, 7.9, 8.2, 8.5, 8.1, 8.0, 8.0, 8.0, 7.9, 7.8, 8.0),
+    ('R08', '11B1003', 7.4, 7.2, 7.5, 7.8, 7.5, 7.4, 7.3, 7.2, 7.4, 7.3, 7.4),
+    ('R09', '11B2001', 5.2, 5.0, 5.3, 5.5, 5.2, 5.3, 5.1, 5.0, 5.2, 5.0, 5.2),
+    ('R10', '11B2002', 8.9, 8.5, 8.7, 9.0, 8.8, 8.9, 8.8, 8.7, 8.6, 8.5, 8.9),
+    ('R11', '11B2003', 4.9, 5.0, 4.8, 5.0, 5.1, 4.9, 4.8, 5.0, 4.7, 4.6, 4.9),
+    ('R12', '11B2004', 5.7, 5.8, 5.6, 5.5, 5.7, 5.6, 5.5, 5.4, 5.3, 5.2, 5.7),
+    ('R13', '11B3001', 7.6, 7.5, 7.4, 7.8, 7.6, 7.7, 7.5, 7.4, 7.3, 7.2, 7.6),
+    ('R14', '11B3002', 6.9, 7.0, 7.2, 7.1, 6.9, 7.0, 6.8, 6.7, 6.6, 6.5, 6.9),
+    ('R15', '11B3003', 9.0, 8.8, 9.2, 9.1, 9.0, 9.0, 9.1, 9.0, 9.2, 9.3, 9.0),
+    ('R16', '11B3004', 8.6, 8.7, 8.5, 8.8, 8.7, 8.6, 8.8, 8.7, 8.5, 8.4, 8.6),
+    ('R18', '12C3002', 9.1, 9.0, 9.2, 9.3, 9.1, 9.2, 9.0, 9.1, 9.3, 9.2, 9.1),
+    ('R19', '12C3004', 9.1, 9.2, 9.0, 9.3, 9.1, 9.2, 9.0, 9.1, 9.2, 9.1, 9.1),
+    ('R20', '12C3005', 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0);
+    SELECT * FROM student ;
+ 

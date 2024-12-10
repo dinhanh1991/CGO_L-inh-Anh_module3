@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IClass {
     public void insertClass(SchoolClass schoolClass) throws SQLException;
-    public SchoolClass selectClass(int id);
+    public SchoolClass selectClass(String id);
     public List<SchoolClass> selectAllClasses();
     public List<String[]> searchClass(String className);
 }

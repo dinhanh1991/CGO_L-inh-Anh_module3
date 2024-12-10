@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ClassDAO implements IClass {
-    private static final String INSERT_CLASS_SQL = "{CALL Insert_class(?)}";
+    private static final String INSERT_CLASS_SQL = "{CALL Insert_class(?,?)}";
     private final String SELECT_CLASS_SQL = "SELECT id,class_name,teacher_id,total_students from class where id  =? ";
     private final String SELECT_ALL_CLASS_SQL = "SELECT * from class ";
     private final String GET_INFORMATION_BY_NAME_SQL = "SELECT \n" +
@@ -48,14 +48,14 @@ public class ClassDAO implements IClass {
     }
 
     @Override
-    public SchoolClass selectClass(int id) {
+    public SchoolClass selectClass(String id) {
         SchoolClass schoolClass = null;
         try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CLASS_SQL)){
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String className = resultSet.getString("class_name");
-                int teacherId = resultSet.getInt("teacher_id");
+                String teacherId = resultSet.getString("teacher_id");
                 int totalStudents = resultSet.getInt("total_students");
                 schoolClass = new SchoolClass(id, className, teacherId, totalStudents);
             }
@@ -72,7 +72,7 @@ public class ClassDAO implements IClass {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String className = resultSet.getString("class_name");
-                int teacherId = resultSet.getInt("teacher_id");
+                String teacherId = resultSet.getString("teacher_id");
                 int totalStudents = resultSet.getInt("total_students");
                 schoolClasses.add(new SchoolClass(className, teacherId, totalStudents));
             }

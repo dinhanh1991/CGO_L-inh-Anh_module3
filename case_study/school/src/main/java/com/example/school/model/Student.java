@@ -1,23 +1,39 @@
 package com.example.school.model;
 
 public class Student {
-    private int id;
+    private String id;
     private String name;
     private String className;
-    private int teacherId;
+    private String teacherId;
     private float averageScore;
     private String password;
     private String email;
+    private String classifyStudent;
     public Student() {}
-    public Student( String name, String className, int teacherId, float averageScore, String password, String email) {
+
+    public Student(String id, String name, String className, float averageScore, String classifyStudent) {
+        this.id = id;
         this.name = name;
         this.className = className;
-        this.teacherId = teacherId;
         this.averageScore = averageScore;
+        this.classifyStudent = classifyStudent;
+    }
+
+    public Student(String id, String name, String className, String password, String email) {
+        this.id = id;
+        this.name = name;
+        this.className = className;
         this.password = password;
         this.email = email;
     }
-    public Student(int id, String name, String className, int teacherId, float averageScore, String password, String email) {
+
+    public Student(String name, String className,String password, String email) {
+        this.name = name;
+        this.className = className;
+        this.password = password;
+        this.email = email;
+    }
+    public Student(String id, String name, String className, String teacherId, float averageScore, String password, String email) {
         this.id = id;
         this.name = name;
         this.className = className;
@@ -27,11 +43,11 @@ public class Student {
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -51,11 +67,11 @@ public class Student {
         this.className = className;
     }
 
-    public int getTeacherId() {
+    public String getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
 
@@ -81,5 +97,13 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getClassifyStudent() {
+        return classifyStudent;
+    }
+
+    public void setClassifyStudent(String classifyStudent) {
+        this.classifyStudent = classifyStudent;
     }
 }

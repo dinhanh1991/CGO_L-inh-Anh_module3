@@ -1,29 +1,29 @@
 package com.example.school.model;
 
 public class SchoolClass {
-    private int id;
+    private String id;
     private String className;
-    private int teacherId;
+    private String teacherId;
     private int totalStudents;
 
-    public SchoolClass(String className, int teacherId, int totalStudents) {
+    public SchoolClass(String className, String teacherId, int totalStudents) {
         this.className = className;
         this.teacherId = teacherId;
         this.totalStudents = totalStudents;
     }
 
-    public SchoolClass(int id, String className, int teacherId, int totalStudents) {
+    public SchoolClass(String id, String className, String teacherId, int totalStudents) {
         this.id = id;
         this.className = className;
         this.teacherId = teacherId;
         this.totalStudents = totalStudents;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,11 +35,11 @@ public class SchoolClass {
         this.className = className;
     }
 
-    public int getTeacherId() {
+    public String getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
 

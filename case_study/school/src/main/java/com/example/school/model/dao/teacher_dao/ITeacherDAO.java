@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface ITeacherDAO {
-    public void insertTeacher(Teacher teacher) throws SQLException;
-    public Teacher selectTeacher(int id);
+    public void insertTeacher(Teacher teacher, TeacherAssignment teacherAssignment) throws SQLException;
+    public Teacher selectTeacher(String id);
     public List<Teacher> selectAllTeacher();
     public boolean updateTeacher(Teacher teacher) throws SQLException;
     public boolean deleteTeacher(String id) throws SQLException;

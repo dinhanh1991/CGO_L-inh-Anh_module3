@@ -1,31 +1,36 @@
 package com.example.school.model;
 
 public class TeacherAssignment {
-    private int id;
-    private int teacherId;
+    private String id;
+    private String teacherId;
     private String subject;
     private String teachingClasses;
     private String homeroomClass;
-    public TeacherAssignment(int id, int teacherId, String subject, String teachingClasses, String homeroomClass) {
+
+    public TeacherAssignment(String id) {
+        this.id = id;
+    }
+
+    public TeacherAssignment(String id, String teacherId, String subject, String teachingClasses, String homeroomClass) {
         this.id = id;
         this.teacherId = teacherId;
         this.subject = subject;
         this.teachingClasses = teachingClasses;
         this.homeroomClass = homeroomClass;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTeacherId() {
+    public String getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
 
