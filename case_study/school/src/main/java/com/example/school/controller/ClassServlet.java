@@ -1,7 +1,7 @@
 package com.example.school.controller;
 
 import com.example.school.model.SchoolClass;
-import com.example.school.model.dao.class_dao.ClassDAO;
+import com.example.school.respoitory.class_dao.ClassDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

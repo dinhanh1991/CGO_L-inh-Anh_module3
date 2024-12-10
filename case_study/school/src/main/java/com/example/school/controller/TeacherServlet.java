@@ -2,7 +2,7 @@ package com.example.school.controller;
 
 import com.example.school.model.Teacher;
 import com.example.school.model.TeacherAssignment;
-import com.example.school.model.dao.teacher_dao.TeacherDAO;
+import com.example.school.respoitory.teacher_dao.TeacherDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

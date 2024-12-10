@@ -1,8 +1,8 @@
-package com.example.school.model.dao.teacher_dao;
+package com.example.school.respoitory.teacher_dao;
 
 import com.example.school.model.Teacher;
 import com.example.school.model.TeacherAssignment;
-import com.example.school.model.dao.db_connection.DBConnection;
+import com.example.school.respoitory.db_connection.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

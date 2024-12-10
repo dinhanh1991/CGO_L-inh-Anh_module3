@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Insert Class</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Thêm liên kết Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -31,13 +33,19 @@
               <input type="number" class="form-control" id="totalStudents" name="totalStudents" placeholder="Enter total students" required>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary w-100">Add Class</button>
+              <!-- Thêm icon vào nút Add Class -->
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-plus-circle"></i> Add Class
+              </button>
             </div>
           </form>
         </div>
       </div>
       <div class="mt-3 text-center">
-        <a href="classes?action=list" class="btn btn-secondary">Back to Class List</a>
+        <!-- Thêm icon vào nút Back to Class List -->
+        <a href="classes?action=list" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back to Class List
+        </a>
       </div>
     </div>
   </div>

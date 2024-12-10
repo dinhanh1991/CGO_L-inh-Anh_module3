@@ -1,4 +1,4 @@
-package com.example.school.model.dao.db_connection;
+package com.example.school.respoitory.db_connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

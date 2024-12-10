@@ -1,8 +1,8 @@
-package com.example.school.model.dao.student_dao;
+package com.example.school.respoitory.student_dao;
 
 import com.example.school.model.Result;
 import com.example.school.model.Student;
-import com.example.school.model.dao.db_connection.DBConnection;
+import com.example.school.respoitory.db_connection.DBConnection;
 
 import java.sql.*;
 import java.util.*;

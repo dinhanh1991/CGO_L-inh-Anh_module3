@@ -1,4 +1,4 @@
-package com.example.school.model.dao.teacher_dao;
+package com.example.school.respoitory.teacher_dao;
 
 import com.example.school.model.Result;
 import com.example.school.model.Student;
