@@ -95,7 +95,7 @@ public class TeacherServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        response.sendRedirect("teachers");
+        response.sendRedirect("/teachers?action=list");
     }
 
     private void updateTeacher(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -17,7 +17,7 @@
       <i class="bi bi-person-plus"></i> Add New Student
     </a>
   </div>
-  <form action="<%= request.getContextPath() %>/students?action=sort" method="get" class="row g-3 mb-4">
+  <form action="<%= request.getContextPath() %>students?action=sort" method="get" class="row g-3 mb-4">
     <div class="col-md-4">
       <label for="field" class="form-label">Sort by:</label>
       <select name="field" id="field" class="form-select">
@@ -91,5 +91,22 @@
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.querySelectorAll('th').forEach(function(header) {
+    header.addEventListener('click', function() {
+      const icon = header.querySelector('i');
+      if (icon.classList.contains('bi-sort-up')) {
+        icon.classList.remove('bi-sort-up');
+        icon.classList.add('bi-sort-down');
+      } else if (icon.classList.contains('bi-sort-down')) {
+        icon.classList.remove('bi-sort-down');
+        icon.classList.add('bi-sort-up');
+      } else {
+        icon.classList.add('bi-sort-up');
+      }
+    });
+  });
+
+</script>
 </body>
 </html>
