@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Add New Product</h1>
-<form action="product" method="post">
+<form action="/product" method="post">
   <input type="hidden" name="action" value="add">
   <label>Name:</label>
   <input type="text" name="name" required><br>

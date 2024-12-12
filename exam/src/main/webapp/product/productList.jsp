@@ -6,14 +6,14 @@
 </head>
 <body>
 <h1>Management List</h1>
-<a href="/product?action=add">Add New Product</a>
-<form>
-   Product Name:<input type ="search" name="name" value="name" placeholder="Product Name">
-   Product price:<input type ="search" name="price" value="price" placeholder="Product price">
-   Product Category:<input type ="search" name="category" value="category" placeholder="Category">
-   Product Color:<input type ="search" name="color" value="color" placeholder=" Color">
- <button>clear</button>
+<a href="/product/addProduct.jsp?action=add">Add New Product</a>
+<form action="product?action=search" method="get">
+  Product Name: <input type="search" name="name" placeholder="Product Name" value="${product.name}">
+  Product Price: <input type="search" name="price" placeholder="Product Price"value="${product.price}">
+  Product Category: <input type="search" name="category" placeholder="Category" value="${product.categoryId}">
+  Product Color: <input type="search" name="color" placeholder="Color"value="${product.color}">
   <button type="submit">Search</button>
+  <button type="reset">Clear</button>
 </form>
 <table border="1">
   <tr>

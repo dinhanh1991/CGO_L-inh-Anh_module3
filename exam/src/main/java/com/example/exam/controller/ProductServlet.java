@@ -21,6 +21,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String action = request.getParameter("action");
         try {
             if (action == null) {
@@ -29,6 +30,8 @@ public class ProductServlet extends HttpServlet {
                 editProduct(request, response);
             } else if (action.equals("delete")) {
                 deleteProduct(request, response);
+            } else if (action.equals("search")) {
+                searchProducts(request, response);
             } else {
                 showMessage(request, response, "Unknown action!");
             }
@@ -39,6 +42,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String action = request.getParameter("action");
         try {
             if (action.equals("add")) {
@@ -110,6 +114,17 @@ public class ProductServlet extends HttpServlet {
 
     private void showMessage(HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException {
         request.setAttribute("message", message);
-        request.getRequestDispatcher("product/productList.jsp").forward(request, response);
+        request.getRequestDispatcher("/product/productList.jsp").forward(request, response);
+    }
+    private void searchProducts(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String name = request.getParameter("name");
+        String priceParam = request.getParameter("price");
+        Double price = (priceParam != null && !priceParam.isEmpty()) ? Double.parseDouble(priceParam) : null;
+        String category = request.getParameter("category");
+        String color = request.getParameter("color");
+
+        List<Product> productList = productService.searchProducts(name, price, category, color);
+        request.setAttribute("products", productList);
+        request.getRequestDispatcher("/product/productList.jsp").forward(request, response);
     }
 }

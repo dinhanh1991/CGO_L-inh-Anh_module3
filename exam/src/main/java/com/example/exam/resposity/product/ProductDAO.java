@@ -18,7 +18,7 @@ public class ProductDAO implements IProductDAO {
     private static final String SELECT_PRODUCTS_BY_ID = "select name, price, quantity, color, description, category_id from product where id =?";
     private static final String SELECT_ALL_PRODUCTS = "select * from product";
     private static final String DELETE_PRODUCTS_SQL = "delete from product where id = ?;";
-    private static final String UPDATE_PRODUCTS_SQL = "update product set name = ?,email= ?, country =? where id = ?;";
+    private static final String UPDATE_PRODUCTS_SQL = "update product set name = ?,price= ?, quantity =?,color=?,description=?,category_id=? where id = ?";
     private static final String SELECT_PRODUCTS_BY_NAME = "SELECT * FROM Product WHERE name LIKE =?";
     private static final String SELECT_PRODUCTS_BY_PRICE = "SELECT * FROM Product WHERE price >=";
     private static final String SELECT_PRODUCTS_BY_ALL_INFORM = "SELECT * FROM Product WHERE 1=1";
@@ -98,7 +98,7 @@ public class ProductDAO implements IProductDAO {
     public boolean updateProduct(Product product) throws SQLException {
         boolean isUpdate = false;
         try(PreparedStatement preparedStatement =connection.prepareStatement(UPDATE_PRODUCTS_SQL)) {
-            preparedStatement.setString(1,product.getNameProduct());
+            preparedStatement.setInt(1,product.getId());
             isUpdate = preparedStatement.executeUpdate() > 0;
         }catch (SQLException e){
             System.out.println("SQLException: " + e.getMessage());

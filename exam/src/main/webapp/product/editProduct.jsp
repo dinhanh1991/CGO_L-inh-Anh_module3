@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@
 </c:if>
 
 <form action="product" method="post">
-  <input type="hidden" name="id" value="${product.id}">
+  <input type="hidden" name="id" value="${param.id}">
 
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" value="${product.nameProduct}" required><br><br>
