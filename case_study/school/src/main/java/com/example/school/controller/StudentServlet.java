@@ -18,6 +18,7 @@ import java.util.List;
 public class StudentServlet extends HttpServlet {
 
     private final StudentDAO studentDAO = new StudentDAO();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -123,8 +124,8 @@ public class StudentServlet extends HttpServlet {
         String className = request.getParameter("className");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        Student student = new Student(id,name, className, password, email);
-        String idResult =request.getParameter("idResult");
+        Student student = new Student(id, name, className, password, email);
+        String idResult = request.getParameter("idResult");
         float mathScore = Float.parseFloat(request.getParameter("math"));
         float physicsScore = Float.parseFloat(request.getParameter("physics"));
         float chemistryScore = Float.parseFloat(request.getParameter("chemistry"));
@@ -135,8 +136,8 @@ public class StudentServlet extends HttpServlet {
         float informaticsScore = Float.parseFloat(request.getParameter("informatics"));
         float physicalEducation = Float.parseFloat(request.getParameter("physicalEducation"));
         float civicEducation = Float.parseFloat(request.getParameter("civicEducation"));
-        Result result =new Result(idResult,id,mathScore,physicsScore,chemistryScore,literatureScore,historyScore
-        ,geographyScore,englishScore,informaticsScore,physicalEducation,civicEducation);
+        Result result = new Result(idResult, id, mathScore, physicsScore, chemistryScore, literatureScore, historyScore
+                , geographyScore, englishScore, informaticsScore, physicalEducation, civicEducation);
         studentDAO.insertStudent(student, result);
         response.sendRedirect(request.getContextPath() + "/students?action=list");
     }
@@ -158,11 +159,12 @@ public class StudentServlet extends HttpServlet {
         float physicalEducation = parseFloatOrDefault(request.getParameter("physicalEducation"));
         float civicEducation = parseFloatOrDefault(request.getParameter("civicEducation"));
         Student student = new Student(id, name, className, password, email);
-        Result result =new Result(mathScore,physicsScore,chemistryScore,literatureScore,historyScore
-                ,geographyScore,englishScore,informaticsScore,physicalEducation,civicEducation);
+        Result result = new Result(mathScore, physicsScore, chemistryScore, literatureScore, historyScore
+                , geographyScore, englishScore, informaticsScore, physicalEducation, civicEducation);
         studentDAO.updateStudent(student, result);
         response.sendRedirect(request.getContextPath() + "/students?action=list");
     }
+
     private float parseFloatOrDefault(String value) {
         try {
             return value.isEmpty() ? 0 : Float.parseFloat(value);

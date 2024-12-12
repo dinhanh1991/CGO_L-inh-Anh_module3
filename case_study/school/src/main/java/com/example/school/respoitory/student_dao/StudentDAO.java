@@ -5,20 +5,23 @@ import com.example.school.model.Student;
 import com.example.school.respoitory.db_connection.DBConnection;
 
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class StudentDAO implements IStudentDAO {
-    private static final String INSERT_STUDENT_SQL ="{CALL insert_student(?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)}";
-    private static final String SELECT_STUDENT_BY_ID = "select id,name, class_name,teacher_id,average_score,password,email from student where id =?";
+    private static final String INSERT_STUDENT_SQL = "{CALL insert_student(?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)}";
+    private static final String SELECT_STUDENT_BY_ID = "select  student_id, math, physics, chemistry, literature, history, geography, english, informatics, physical_education, civic_education, average_score from result where id =?";
     private static final String SELECT_ALL_STUDENT = "select * from student";
     private static final String DELETE_STUDENT_SQL = "{CALL DELETE_STUDENT(?)}";
     private static final String UPDATE_STUDENT_SQL = "{CALL UpdateStudentAndResult(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-    private static final String CLASSIFY_STUDENT_SQL="{CALL GetStudentClassification()}";
+    private static final String CLASSIFY_STUDENT_SQL = "{CALL GetStudentClassification()}";
     private final DBConnection dbConnection = new DBConnection();
     private final Connection connection = dbConnection.getConnection();
 
     @Override
-    public void insertStudent(Student student,Result result) throws SQLException {
+    public void insertStudent(Student student, Result result) throws SQLException {
         connection.setAutoCommit(false);
         try (CallableStatement stmt = connection.prepareCall(INSERT_STUDENT_SQL)) {
             stmt.setString(1, student.getId());
@@ -51,7 +54,7 @@ public class StudentDAO implements IStudentDAO {
     @Override
     public Student selectStudent(String id) {
         Student student = null;
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENT_BY_ID)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENT_BY_ID)) {
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -61,9 +64,9 @@ public class StudentDAO implements IStudentDAO {
                 float averageScore = resultSet.getFloat("average_score");
                 String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
-                student =new Student(id,name,className,teacherId,averageScore,password,email);
+                student = new Student(id, name, className, teacherId, averageScore, password, email);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException("Error retrieving student with ID: " + id, e);
         }
         return student;
@@ -72,7 +75,7 @@ public class StudentDAO implements IStudentDAO {
     @Override
     public List<Student> selectAllStudent() {
         List<Student> students = new ArrayList<>();
-        try(PreparedStatement preparedStatement =connection.prepareStatement(SELECT_ALL_STUDENT)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_STUDENT)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String id = resultSet.getString("id");
@@ -82,9 +85,9 @@ public class StudentDAO implements IStudentDAO {
                 float averageScore = resultSet.getFloat("average_score");
                 String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
-                students.add(new Student(id,name,className,teacherId,averageScore,password,email));
+                students.add(new Student(id, name, className, teacherId, averageScore, password, email));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return students;
@@ -96,7 +99,7 @@ public class StudentDAO implements IStudentDAO {
         connection.setAutoCommit(false);
         try (CallableStatement callableStatement = connection.prepareCall(UPDATE_STUDENT_SQL)) {
             callableStatement.setString(1, student.getId());
-            callableStatement.setString(2,student.getName());
+            callableStatement.setString(2, student.getName());
             callableStatement.setString(3, student.getClassName());
             callableStatement.setString(4, student.getPassword());
             callableStatement.setString(5, student.getEmail());
@@ -116,12 +119,13 @@ public class StudentDAO implements IStudentDAO {
         } catch (SQLException e) {
             connection.rollback();
             System.out.println("Error executing SQL: " + e.getMessage());
-            throw e;  // Ném lại ngoại lệ
+            throw e;
         } finally {
             connection.setAutoCommit(true);  // Đảm bảo set lại auto commit
         }
         return isUpdated;
     }
+
     @Override
     public boolean deleteStudent(String id) throws SQLException {
         boolean isDeleted = false;
@@ -175,18 +179,18 @@ public class StudentDAO implements IStudentDAO {
         try (CallableStatement callableStatement = connection.prepareCall(CLASSIFY_STUDENT_SQL);
              ResultSet resultSet = callableStatement.executeQuery()) {
             while (resultSet.next()) {
-                String id =resultSet.getString("id") ;
-                String name = resultSet.getString("name") ;
-                String className = resultSet.getString("class_name") ;
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String className = resultSet.getString("class_name");
                 float averageScore = resultSet.getFloat("average_score");
-                String classification = resultSet.getString("classification") ;
+                String classification = resultSet.getString("classification");
                 Student student = new Student(id, name, className, averageScore, classification);
                 students.add(student);
             }
             if (students.isEmpty()) {
                 System.out.println("No students found from classification procedure.");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return students;

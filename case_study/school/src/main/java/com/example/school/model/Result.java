@@ -47,6 +47,9 @@ public class Result {
         this.studentId = studentId;
     }
 
+    public Result() {
+    }
+
     public Result(String id, String studentId, float math, float physics, float chemistry, float literature, float history, float geography, float english, float informatics, float physicalEducation, float civicEducation) {
         this.id = id;
         this.studentId = studentId;
@@ -160,5 +163,18 @@ public class Result {
     public float calculateAverageScore() {
         return (math + physics + chemistry + literature + history + geography + english + informatics
                 + physicalEducation + civicEducation) / 10.0f;
+    }
+    public  String getClassify(float average) {
+        if (average >= 9.0) {
+            return "Excellent";
+        } else if (average >= 8.0) {
+            return "Good";
+        } else if (average >= 6.5) {
+            return "Fair";
+        } else if (average >= 5.0) {
+            return "Average";
+        } else {
+            return "Poor";
+        }
     }
 }
